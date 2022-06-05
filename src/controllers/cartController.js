@@ -306,7 +306,7 @@ const deleteCart = async (req, res) => {
             return res.status(404).send({ status: false, message: 'User does not exist in DB' }); 
         }
 
-         Authorization
+        // Authorization
         if(req.userId !== userId) {
             return res.status(403).send({ status: false,
                 message: `Authorisation failed; You are logged in as ${req.userId}, not as ${userId}`
