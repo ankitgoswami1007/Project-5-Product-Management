@@ -23,6 +23,13 @@ const createOrder = async (req, res) => {
             return res.status(400).send({ status: false, message: 'Please enter valid user ID' });
         }
 
+
+        const userDoc = await userModel.findById(userId) 
+
+        if(userDoc === null) {
+            return res.status(404).send({ status: false, message: 'User does not exist in DB' }); 
+        }
+
         
         // Authorization
         if(req.userId !== userId) {
@@ -31,11 +38,6 @@ const createOrder = async (req, res) => {
             });
         }
 
-        const userDoc = await userModel.findById(userId) 
-
-        if(userDoc === null) {
-            return res.status(404).send({ status: false, message: 'User does not exist in DB' }); 
-        }
 
         let data = { ...req.body }; // req.body does not have a prototype; creating a new object (prototype object associates by default)
 
