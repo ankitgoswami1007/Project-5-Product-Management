@@ -20,7 +20,7 @@ mongoose
       useNewUrlParser: true,
     }
   )
-  .then((result) => console.log("MongoDb is connected / Group12Database"))
+  .then((result) => console.log("MongoDb is connected"))
   .catch((err) => console.log(err));
 
 app.use("/", route);
